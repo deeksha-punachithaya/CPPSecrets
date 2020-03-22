@@ -17,6 +17,8 @@ print(df.describe())
 X = df.drop(['class'],axis=1)
 y = df['class']
 
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=7)
+
 model = svm.SVC()
 model.fit(X_train, y_train)
 
@@ -25,8 +27,6 @@ predictions = [round(value) for value in y_pred]
 
 accuracy = accuracy_score(y_test, predictions)
 print(accuracy)
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=7)
 
 model = XGBClassifier()
 model.fit(X_train, y_train)
